@@ -1,0 +1,68 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import java.util.ArrayList?>
+<VBox stylesheets="/css/main.css"
+      fx:controller="com.ludwigstralewiren.Controller.Controller"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:id="container">
+
+    <Text fx:id="message" text=""/>
+
+    <Label fx:id="title" text="YATZY"/>
+
+
+    <HBox fx:id="dices">
+        <Button fx:id="buttonone" text="??" onMouseClicked="#handle"/>
+        <Button fx:id="buttontwo" text="??" onMouseClicked="#handle"/>
+        <Button fx:id="buttonthree" text="??" onMouseClicked="#handle"/>
+        <Button fx:id="buttonfour" text="??" onMouseClicked="#handle"/>
+        <Button fx:id="buttonfive" text="??" onMouseClicked="#handle"/>
+
+        <fx:define>
+            <ArrayList fx:id="diceList">
+                <fx:reference source="buttonone"/>
+                <fx:reference source="buttontwo"/>
+                <fx:reference source="buttonthree"/>
+                <fx:reference source="buttonfour"/>
+                <fx:reference source="buttonfive"/>
+            </ArrayList>
+        </fx:define>
+    </HBox>
+
+    <TableView fx:id="myBoard">
+        <columns>
+
+            <TableColumn text="Scores" prefWidth="150" resizable="false">
+                <cellValueFactory>
+                    <PropertyValueFactory property="typeOfScore" fx:id="typescore"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Player 1" prefWidth="110">
+                <cellValueFactory>
+                    <PropertyValueFactory property="playerOnePoints"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Player 2" prefWidth="110">
+                <cellValueFactory>
+                    <PropertyValueFactory property="playerTwoPoints"/>
+                </cellValueFactory>
+            </TableColumn>
+
+        </columns>
+
+
+    </TableView>
+
+
+    <HBox>
+        <Button fx:id="addpoints" text="Add Points" onAction="#addPoints"/>
+        <Button fx:id="playbutton" text="Throw Dices" onAction="#rollAllDices"/>
+        <Button fx:id="endturn" text="End turn" onAction="#endTurn"/>
+    </HBox>
+
+</VBox>
